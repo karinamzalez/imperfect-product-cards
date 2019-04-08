@@ -1,11 +1,10 @@
 import React from 'react';
+import Product from './Product';
 
 const Products = ({ products }) => {
-  console.log({ products });
-
   return (
     <div>
-      Product cards here!!
+      <Product product={products[0]} />
     </div>
   );
 };
