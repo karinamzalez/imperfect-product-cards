@@ -1,10 +1,11 @@
 import React from 'react';
 import Product from './Product';
+import './Products.css';
 
 const Products = ({ products }) => {
   return (
-    <div>
-      <Product product={products[0]} />
+    <div className="Products-grid">
+      {products.map(product => <Product key={product.variantId} product={product} />)}
     </div>
   );
 };

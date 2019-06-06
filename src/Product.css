@@ -1,0 +1,10 @@
+.Product-card {
+  border: 1px solid gray;
+  border-radius: 4px;
+  margin: 36px;
+  width: 20%;
+}
+
+.Product-card > * {
+  overflow: hidden;
+}

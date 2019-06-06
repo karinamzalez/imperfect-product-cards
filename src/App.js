@@ -1,31 +1,18 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 import Products from './Products';
 import products from './products.json';
+import Filters from './Filters';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-        <Products products={products} />
-      </div>
-    );
-  }
-}
+const App = () => (
+  <div className="app">
+    <div className="App-row">
+      <Filters />
+    </div>
+    <div className="App-row">
+      <Products products={products} />
+    </div>
+  </div>
+);
 
 export default App;
