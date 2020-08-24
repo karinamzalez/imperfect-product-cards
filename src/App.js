@@ -1,18 +1,29 @@
+// IMPORTS -----------------------------------
 import React from 'react';
-import './App.css';
+import styled from 'styled-components';
 import Products from './Products';
 import products from './products.json';
 import Filters from './Filters';
 
+// COMPONENT -----------------------------------
 const App = () => (
-  <div className="app">
-    <div className="App-row">
+  <>
+    <Row>
       <Filters />
-    </div>
-    <div className="App-row">
+    </Row>
+    <Row>
       <Products products={products} />
-    </div>
-  </div>
+    </Row>
+  </>
 );
 
+// STYLING -----------------------------------
+const Row = styled.div`
+  display: flex;
+  flex: 1;
+  text-align: center;
+  margin: 36px;
+`;
+
+// EXPORTS -----------------------------------
 export default App;
