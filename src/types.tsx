@@ -17,6 +17,7 @@ export type CategoryObjType = {
 }
 
 export type CategoryName = 
+  | "All Products"
   | "Produce"
   | "Fruit"
   | "Vegetables"
@@ -50,7 +51,7 @@ export type CategoryCommonId =
   | "KIPB"
   | "O40D"
   | "GJYF"
-  | "VTEF";
+  | "VTEF"
 
 export type ProductType = {
   productId: string,
