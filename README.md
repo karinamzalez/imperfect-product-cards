@@ -10,14 +10,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   1. Install dependencies: 
     `npm install` or `yarn`
   
-  2. Start express API server. Once running, navigate to localhost:9001 to confirm it is runnig correctly: 
+  2. Start express API server. Once running, navigate to [http://localhost:9001](http://localhost:9001) to confirm it is runnig correctly: 
 ```sh
 # Run on a later version of node
 # Runs on PORT 9001 by default, but can set the PORT env variable to run on a different port
 $ node api/server.js
 ```
 
-3. start local server: In the project directory-- i.e. ./src/, you can run `yarn start`
+3. start local server: In the project directory-- `src/`, you can run `yarn start`
 
 4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
