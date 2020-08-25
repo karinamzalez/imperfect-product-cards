@@ -14,8 +14,13 @@ const Products = ({ products }) => {
 
 // STYLING -----------------------------------
 const Grid = styled.div`
-  display: flex;
-  flex-wrap: wrap;`
+  display: grid;
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+  }
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+`;
 
 // EXPORTS -----------------------------------
 export default Products;
