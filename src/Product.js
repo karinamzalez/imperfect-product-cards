@@ -29,8 +29,6 @@ const Product = ({ product }) => {
 const Card = styled.div`
   border: 1px solid gray;
   border-radius: 4px;
-  margin: 36px;
-  width: 20%;
   
   * {
     overflow: hidden;
