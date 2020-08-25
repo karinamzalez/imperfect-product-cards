@@ -1,12 +1,4 @@
 // Internal types -------------------------------
-type categoryType = {
-  categoryId: string,
-  name: CategoryName,
-  commonId: CategoryCommonId,
-  parentId: any,
-  thumbnailUrl: any
-}
-
 type pickingLocationType = 'PRO' | 'DRY';
 
 type tagType = {
@@ -16,6 +8,14 @@ type tagType = {
 }
 
 // Exported Types ---------------------------------
+export type CategoryObjType = {
+  categoryId: string,
+  name: CategoryName,
+  commonId: CategoryCommonId,
+  parentId: any,
+  thumbnailUrl: any
+}
+
 export type CategoryName = 
   | "Produce"
   | "Fruit"
@@ -52,7 +52,7 @@ export type CategoryCommonId =
   | "GJYF"
   | "VTEF";
 
-export type Product = {
+export type ProductType = {
   productId: string,
   inventoryId: string,
   name: string,
@@ -93,6 +93,6 @@ export type Product = {
   imageFilename: string,
   hasNutritionInfo: boolean,
   tags: tagType[],
-  categories: categoryType[],
+  categories: CategoryObjType[],
   isVisible: boolean
 }
