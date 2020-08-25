@@ -21,7 +21,7 @@ $ node api/server.js
 
 4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## Process: 
+## Process
 - I chose to implement Category Shelves in the given "Product Cards" repo. 
 - I exclusively wrote functional components so that I could use react hooks.
 - I replaced the direct import of 'products.json' into App.tsx with an async http call to the express back end, using the library, Axios and async/await. To do so, I needed to make a small change to the express api so that it would accept calls from my localhost origin.  
@@ -32,7 +32,7 @@ $ node api/server.js
 - I took a quick second to add responsive styles. To do so, I used scss grid and media queries. 
 - For filtering, my Filters and Products components are sharing the state of their parent, App.tsx. I decided to do it this way because this is a relatively simple use case and a callback seemed like the quickest and easiest way to implement shared state. 
 
-## TODO (with more time, I would...): 
+## TODO (with more time, I would...)
 - I left some TODO notes in some of my components. For reference :)
 - I chose to use the Product Categories to filterBy-- with more time, I would also use the tags so that the user would filter by things like "Gluten-free". 
 - I would make the Category headers sticky. So that the user still knows what category they are in when scrolling. 
