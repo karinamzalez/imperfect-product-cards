@@ -1,13 +1,21 @@
+// IMPORTS -----------------------------------
 import React from 'react';
+import styled from 'styled-components';
 import Product from './Product';
-import './Products.css';
 
+// COMPONENT -----------------------------------
 const Products = ({ products }) => {
   return (
-    <div className="Products-grid">
+    <Grid>
       {products.map(product => <Product key={product.variantId} product={product} />)}
-    </div>
+    </Grid>
   );
 };
 
+// STYLING -----------------------------------
+const Grid = styled.div`
+  display: flex;
+  flex-wrap: wrap;`
+
+// EXPORTS -----------------------------------
 export default Products;

@@ -12,7 +12,7 @@ const Filters = () => (
 );
 
 // STYLING -----------------------------------
-const Row = styled.div `
+const Row = styled.div`
   display: flex;
   flex: 1;
   align-items: center;
