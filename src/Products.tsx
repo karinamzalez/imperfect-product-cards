@@ -6,10 +6,12 @@ import { uniqBy } from 'lodash';
 /* components */
 import Product from './Product';
 /* types */
-import { CategoryObjType, CategoryName, CategoryCommonId, ProductType } from './types';
+import { CategoryObjType, CategoryName, 
+  CategoryCommonId, ProductType } from './types';
 
 interface ProductsProps {
-  products: ProductType[]
+  products: ProductType[],
+  filter: CategoryName
 }
 
 type CategoryType = {
@@ -22,10 +24,18 @@ type HighLevelCategoryType = {
   name: 'Produce' | 'Non-Produce'
 }
 
+// LOCAL VARS -------------------
+const highLevelCategories: HighLevelCategoryType[] = [
+  { id: "PRO", name: "Produce" },
+  { id: "DRY", name: "Non-Produce" },
+];
+
+
 // COMPONENT -----------------------------------
-const Products: React.FC<ProductsProps> = ({ products }) => {
+const Products: React.FC<ProductsProps> = ({ products, filter }) => {
   // HOOKS ----------------------------------------------------
   const [ categories, setCategories ] = useState<CategoryType[]>([]);
+  const [ filteredCategory, setFilteredCategory ] = useState<CategoryType | undefined>(undefined);
 
   useEffect(() => {
     // Filter Products for unique categories
@@ -37,13 +47,14 @@ const Products: React.FC<ProductsProps> = ({ products }) => {
       }, []);
     setCategories(categories);
   }, [products]);
-    
-  // COMPONENT METHODS AND VARS----------------------------------------------------
-  const highLevelCategories: HighLevelCategoryType[] = [
-    { id: "PRO", name: "Produce" },
-    { id: "DRY", name: "Non-Produce" },
-  ];
 
+  useEffect(() => {
+    // Handle filter selected
+    const category = categories.find(category => category.name === filter);
+    setFilteredCategory(category || undefined);
+  }, [filter]);
+
+  // COMPONENT METHODS----------------------------------------------------
   const getFilteredProducts = (categoryId: CategoryCommonId) => {
     return products.filter(
       (product) =>
@@ -56,8 +67,10 @@ const Products: React.FC<ProductsProps> = ({ products }) => {
       produce categories more programmatically (utilize fact that products all have two categories, 
       one for produce/non-produce and one more specific one) */
     const produceIds = ["fruit", "VEG"];
-    const produceCategories = categories.filter((category) => produceIds.includes(category.id));
-    const nonProduceCategories = categories.filter((category) => !produceIds.includes(category.id));
+    const categoryArr = filteredCategory ? [filteredCategory] : categories;
+    let produceCategories = categoryArr.filter((category) => produceIds.includes(category.id));
+    let nonProduceCategories = categoryArr.filter((category) => !produceIds.includes(category.id));
+
     return categoryId === "PRO" ? produceCategories : nonProduceCategories;
   };
 
