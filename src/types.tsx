@@ -20,7 +20,7 @@ export type CategoryName =
   | "All Products"
   | "Produce"
   | "Fruit"
-  | "Vegetables"
+  | "Vegetables"cd 
   | "Non-Produce"
   | "Beverages"
   | "Breakfast"

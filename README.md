@@ -1,5 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
 ## Running
 
 We added a separate express API to serve products to the client app.  To run that prior to kicking
