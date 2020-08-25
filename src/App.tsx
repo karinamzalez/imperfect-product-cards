@@ -19,9 +19,11 @@ const App: React.FC = () => {
     const fetchProducts = async () => {
       const response = await axios.get("http://localhost:9001/products");
       addProducts(response.data);
+      debugger
       console.log("Products added!");
     }
     fetchProducts();
+    // passing empty array to register effect callback only once
   }, [])
 
   return <>
@@ -36,10 +38,8 @@ const App: React.FC = () => {
 
 // STYLING -----------------------------------
 const Row = styled.div`
-  display: flex;
-  flex: 1;
   text-align: center;
-  margin: 36px;
+  margin: 20px;
 `;
 
 export default App;
