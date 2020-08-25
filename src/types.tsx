@@ -1,8 +1,8 @@
 // Internal types -------------------------------
 type categoryType = {
   categoryId: string,
-  name: string,
-  commonId: string,
+  name: CategoryName,
+  commonId: CategoryCommonId,
   parentId: any,
   thumbnailUrl: any
 }
@@ -16,6 +16,42 @@ type tagType = {
 }
 
 // Exported Types ---------------------------------
+export type CategoryName = 
+  | "Produce"
+  | "Fruit"
+  | "Vegetables"
+  | "Non-Produce"
+  | "Beverages"
+  | "Breakfast"
+  | "Bakery"
+  | "Oils, Condiments, Spices and Spreads"
+  | "Soups/Stocks"
+  | "Dried Pantry Staples"
+  | "Prepared Foods & Kits"
+  | "Canned/Pickled Foods"
+  | "Salty Snacks"
+  | "Sweet Snacks"
+  | "Bars"
+  | "Baking"
+
+export type CategoryCommonId =
+  | "fruit"
+  | "VEG"
+  | "PRO"
+  | "DRY"
+  | "KNA7"
+  | "BXD4"
+  | "J2WO"
+  | "5OBT"
+  | "998D"
+  | "4CX0"
+  | "YISE"
+  | "GY80"
+  | "KIPB"
+  | "O40D"
+  | "GJYF"
+  | "VTEF";
+
 export type Product = {
   productId: string,
   inventoryId: string,
