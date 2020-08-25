@@ -1,6 +1,6 @@
 // IMPORTS -----------------------------------
 /* libraries */
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 /* components */
@@ -8,11 +8,18 @@ import Filters from './Filters';
 import Products from './Products';
 /* custom hooks */ 
 import useProducts from './customHooks/useProducts';
+/* types */
+import { CategoryName } from './types';
 
 // COMPONENT -----------------------------------
 const App: React.FC = () => {
   // set funtional component state
   const { products, addProducts } = useProducts([]);
+  const [ filter, setFilter ] = useState<any>('All Products');
+
+  function handleSelect(newFilter: CategoryName) {
+    setFilter(newFilter);
+  }
 
   useEffect(() => {
     // asynchronously fetch/set products
@@ -27,10 +34,10 @@ const App: React.FC = () => {
 
   return <>
     <Row>
-      <Filters />
+      <Filters selectedFilter={filter} handleSelect={handleSelect} />
     </Row>
     <Row>
-      <Products products={products} />
+      <Products products={products} filter={filter} />
     </Row>
   </>
 };
