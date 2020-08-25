@@ -1,10 +1,15 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
 ## Running
 
 We added a separate express API to serve products to the client app.  To run that prior to kicking
 off the webpack dev server running the react app:
 
+  1. Install dependencies: 
+    `npm install` or `yarn`
+  
+  2. Start express API server: 
 ```sh
 # Run on a later version of node
 # Runs on PORT 9001 by default, but can set the PORT env variable to run on a different port
