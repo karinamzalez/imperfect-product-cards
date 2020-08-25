@@ -25,58 +25,42 @@ type HighLevelCategoryType = {
 // COMPONENT -----------------------------------
 const Products: React.FC<ProductsProps> = ({ products }) => {
   // HOOKS ----------------------------------------------------
-  const [ produceCategories, setProduceCategories ] = useState<CategoryType[]>([]);
-  const [ nonProduceCategories, setNonProduceCategories ] = useState<CategoryType[]>([]);
+  const [ categories, setCategories ] = useState<CategoryType[]>([]);
 
   useEffect(() => {
     // Filter Products for unique categories
     const categoryObjs: CategoryObjType[] = products.flatMap((product: ProductType) => product.categories);
-
     const categories: CategoryType[] = uniqBy(categoryObjs, 'commonId')
       .reduce((acc: CategoryType[], category: CategoryObjType) => {
-        // filter out produce categories bc they are higher level
-        if (!["PRO", "DRY"].includes(category.commonId)) {
-          acc.push({ id: category.commonId, name: category.name });
-        }
+        acc.push({ id: category.commonId, name: category.name });
         return acc;
       }, []);
-
-    /* TODO: With more time, I would refactor this repetetive code and filter out 
-      produce categories more programmatically (utilize fact that products all have two categories, 
-      one for produce/non-produce and one more specific one) */
-    const produceCategories = getProduceCategories(true, categories);
-    const nonProduceCategories = getProduceCategories(false, categories);
-
-    setProduceCategories(produceCategories);
-    setNonProduceCategories(nonProduceCategories);
+    setCategories(categories);
   }, [products]);
-
+    
   // COMPONENT METHODS AND VARS----------------------------------------------------
   const highLevelCategories: HighLevelCategoryType[] = [
     { id: "PRO", name: "Produce" },
     { id: "DRY", name: "Non-Produce" },
   ];
 
-  const getCategories = (categoryId: 'PRO' | 'DRY') => {
-    return categoryId === "PRO" ? produceCategories : nonProduceCategories;
-  };
-
   const getFilteredProducts = (categoryId: CategoryCommonId) => {
     return products.filter(
       (product) =>
-        product.categories[0] && product.categories[0].commonId === categoryId
+      product.categories[0] && product.categories[0].commonId === categoryId
     );
   };
 
-  const getProduceCategories = (produce: boolean, categories: CategoryType[]) => {
+  const getProduceCategories = (categoryId: "PRO" | "DRY") => {
+    /* TODO: With more time, I would refactor this repetetive code and filter out 
+      produce categories more programmatically (utilize fact that products all have two categories, 
+      one for produce/non-produce and one more specific one) */
     const produceIds = ["fruit", "VEG"];
-    // QUESTION: Is there a way to make leading bang conditional?
-    return categories.filter((category) =>
-      produce
-        ? produceIds.includes(category.id)
-        : !produceIds.includes(category.id)
-    );
-  }
+    const produceCategories = categories.filter((category) => produceIds.includes(category.id));
+    const nonProduceCategories = categories.filter((category) => !produceIds.includes(category.id));
+    return categoryId === "PRO" ? produceCategories : nonProduceCategories;
+  };
+
 
   // JSX ----------------------------------------------------
   return (
@@ -86,7 +70,7 @@ const Products: React.FC<ProductsProps> = ({ products }) => {
           <Group key={produceCategory.id}>
             <h1>{produceCategory.name}</h1>
             {
-              getCategories(produceCategory.id).map(category =>
+              getProduceCategories(produceCategory.id).map(category =>
                 <div key={category.id}>
                   <h2>{category.name}</h2>
                   <Grid>
