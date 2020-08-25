@@ -1,6 +1,6 @@
 // IMPORTS -----------------------------------
 /* libraries */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 /* components */
@@ -19,7 +19,6 @@ const App: React.FC = () => {
     const fetchProducts = async () => {
       const response = await axios.get("http://localhost:9001/products");
       addProducts(response.data);
-      debugger
       console.log("Products added!");
     }
     fetchProducts();
