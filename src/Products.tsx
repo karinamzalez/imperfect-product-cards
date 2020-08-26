@@ -55,7 +55,8 @@ const Products: React.FC<ProductsProps> = ({ products, filter }) => {
   }, [filter]);
 
   // COMPONENT METHODS----------------------------------------------------
-  const getFilteredProducts = (categoryId: CategoryCommonId) => {
+  const getCategoryProducts = (categoryId: CategoryCommonId) => {
+    // TODO: with more time, I would refactor the [0] out
     return products.filter(
       (product) =>
       product.categories[0] && product.categories[0].commonId === categoryId
@@ -87,7 +88,7 @@ const Products: React.FC<ProductsProps> = ({ products, filter }) => {
                 <div key={category.id}>
                   <h2>{category.name}</h2>
                   <Grid>
-                    {getFilteredProducts(category.id).map(product => <Product key={product.variantId} product={product} />)}
+                    {getCategoryProducts(category.id).map(product => <Product key={product.variantId} product={product} />)}
                   </Grid>
                 </div>)
             }
